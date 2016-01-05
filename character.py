@@ -12,15 +12,17 @@ class Character(object):
         self.items.append(item)
         return item
 
+    def get_inventory(self):
+        result = []
+        for item in self.items:
+            result.append(item.name)
+        return result
+
 
 class Player(Character):
     def __init__(self, name, desc, hp, coins):
         super(Player, self).__init__(name, desc, hp, coins)
         self.player = True
-
-    def show_inventory(self):
-        for item in self.items:
-            print item
 
 
 class Enemy(Character):

@@ -5,7 +5,7 @@ class Location(object):
         self.desc = desc
         self.items = []
         self.characters = []
-        self.paths = []
+        self.paths = {}
         self.first_time = True
 
     def add_item(self, item):
@@ -14,9 +14,10 @@ class Location(object):
 
     def add_character(self, character):
         self.characters.append(character)
+        return character
 
     def add_path(self, path):
-        self.paths.append(path)
+        self.paths.update(path)
         return path
 
 
