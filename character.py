@@ -24,6 +24,9 @@ class Player(Character):
         super(Player, self).__init__(name, desc, hp, coins)
         self.player = True
 
+    def move(self, direction):
+        pass
+
 
 class Enemy(Character):
 

@@ -32,6 +32,10 @@ class TestEnemy(unittest.TestCase):
         self.assertTrue(self.enemy.can_fight)
         self.assertIsInstance(self.enemy, Character)
 
+
+
+
+
 if __name__ == '__main__':
     unittest.main()
 
