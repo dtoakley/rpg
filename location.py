@@ -20,15 +20,25 @@ class Location(object):
         self.paths.update(path)
         return path
 
+    def get_item(self, item_name):
+        for item in self.items:
+            if item.name == item_name:
+                return item
+            else:
+                print "item not here!"
 
+    def get_desc(self):
+        return self.desc
 
+    def load(self):
+        print self.desc
 
+        if self.first_time:
+            self.first_time_event()
+            self.first_time = False
 
-
-
-
-
-
+    def first_time_event(self):
+        print "first time event!"
 
 
 

@@ -1,41 +1,35 @@
 
 class Lexicon(object):
 
-    def __init__(self, game):
-        self.game = game
+    def __init__(self, paths, verbs, nouns, ignores):
         self.vocab = {}
 
-    def add_path(self, path):
-        self.vocab.update({path: "path"})
-        return self.vocab
+        for path in paths:
+            self.vocab.update({path: "path"})
 
-    def add_verb(self, verb):
-        self.vocab.update({verb: "verb"})
-        return self.vocab
+        for verb in verbs:
+            self.vocab.update({verb: "verb"})
 
-    def add_noun(self, noun):
-        self.vocab.update({noun: "noun"})
-        return self.vocab
+        for noun in nouns:
+            self.vocab.update({noun: "noun"})
 
-    def add_ignore(self, ignore):
-        self.vocab.update({ignore: "ignore"})
-        return self.vocab
+        for ignore in ignores:
+            self.vocab.update({ignore: "ignore"})
 
-    def scan(self, sentence):
+    def convert_sentence_to_action(self, sentence):
 
         words = sentence.split()
-        result = []
+        result = {}
 
         for word in words:
             try:
                 word_lower = word.lower()
-                result.append((self.vocab[word_lower], word_lower))
+                result.update({self.vocab[word_lower]: word_lower})
             except KeyError:
                 if word.isdigit():
                     number = int(word)
-                    result.append(("number", number))
-
+                    result.update({"number": number})
                 else:
-                    result.append(("error", word))
+                    result.update({"error": word})
 
         return result

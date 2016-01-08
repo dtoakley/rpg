@@ -6,7 +6,6 @@ class Item(object):
         self.value = value
         self.is_tradeable = is_tradeable
 
-
 class Weapon(Item):
 
     def __init__(self, name, desc, value, damage):

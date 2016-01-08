@@ -1,4 +1,5 @@
 import unittest
+
 from character import *
 from item import *
 
@@ -33,11 +34,6 @@ class TestEnemy(unittest.TestCase):
         self.assertIsInstance(self.enemy, Character)
 
 
-
-
-
-if __name__ == '__main__':
-    unittest.main()
 
 
 
