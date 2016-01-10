@@ -25,7 +25,21 @@ class Location(object):
             if item.name == item_name:
                 return item
             else:
-                print "item not here!"
+                pass
+
+    def get_character(self, character_name):
+        for character in self.characters:
+            if character.name == character_name:
+                return character
+            else:
+                pass
+
+    def search_objects(self, name):
+        for obj in [self.characters, self.items, self.paths]:
+            if name in obj:
+                return obj
+            else:
+                pass
 
     def get_desc(self):
         return self.desc

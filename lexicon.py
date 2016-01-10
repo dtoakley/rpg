@@ -5,16 +5,16 @@ class Lexicon(object):
         self.vocab = {}
 
         for path in paths:
-            self.vocab.update({path: "path"})
+            self.vocab.update({"path": path})
 
         for verb in verbs:
-            self.vocab.update({verb: "verb"})
+            self.vocab.update({"verb": verb})
 
         for noun in nouns:
-            self.vocab.update({noun: "noun"})
+            self.vocab.update({"noun": noun})
 
         for ignore in ignores:
-            self.vocab.update({ignore: "ignore"})
+            self.vocab.update({"ignore": ignore})
 
     def convert_sentence_to_action(self, sentence):
 

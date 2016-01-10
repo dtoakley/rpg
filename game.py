@@ -3,6 +3,7 @@ from lexicon import *
 from location import *
 from item import *
 
+
 class Game(object):
 
     def __init__(self, name):
@@ -30,7 +31,6 @@ class Game(object):
         player.set_location(first_location)
 
         first_location.add_character(player)
-        first_location.load()
 
         while player.is_alive and not player.is_victorious:
             location = player.current_location
@@ -39,12 +39,7 @@ class Game(object):
             if player.is_alive and not player.is_victorious:
                 action = lexicon.convert_sentence_to_action(self.get_player_input())
                 print action
-                try:
-                    player.take_turn(action)
-                except KeyError:
-                    print "sorry, that didn't compute"
-                    action = lexicon.convert_sentence_to_action(self.get_player_input())
-                    print action
+
 
 paths = ["north", "south", "east", "west"]
 verbs = ["pick", "look", "move", "take"]
