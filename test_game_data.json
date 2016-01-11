@@ -1,0 +1,149 @@
+{
+  "locations": {
+    "front_gate": {
+      "desc": "You're outside the front gate of town. It seems to be locked. An town gaurd is standing nearby.",
+      "items": [
+        "Rock"
+      ],
+      "characters": [
+        "Town Guard"
+      ],
+      "paths": {
+        "north": "Main street"
+      }
+    },
+    "main_street": {
+      "desc": "The main street of town, with the town center up ahead. To your left is the General Store, and the Tavern is on your right.",
+      "items": [],
+      "characters": [
+        "old_man"
+      ],
+      "paths": {
+        "south": "Front gate",
+        "east": "Tavern",
+        "north": "Town Center",
+        "west": "General Store"
+      }
+    },
+    "tavern": {
+      "desc": "A warm and bustling warm. I wonder if I can find work here.",
+      "items": [],
+      "characters": [
+        "Bar Tender"
+      ],
+      "paths": {
+        "west": "Main street"
+      }
+    },
+    "general_store": {
+      "desc": "There is a large wanted poster on the wall and collections of weapons and other items around the store.",
+      "items": [
+        "Wanted poster"
+      ],
+      "characters": [
+        "General store manager"
+      ],
+      "paths": {
+        "east": "Main street"
+      }
+    }
+  },
+  "characters": {
+    "old_man": {
+      "desc": "An old man. He's carrying a cool walking stick.",
+      "items": [
+        "Walking stick"
+      ]
+    },
+    "town_gaurd": {
+      "desc": "He's standing in front of the town gate. Looks angry...",
+      "items": [
+        "Town key"
+      ]
+    },
+    "bar_tender": {
+      "desc": "The bar tender looks pretty stressed with all the customers.",
+      "items": [
+        "Tavern key"
+      ]
+    },
+    "general_store_manager": {
+      "desc": "The general store manager. Looks like he knows a thing or two about weaponry...",
+      "items": [
+        "Iron sword",
+        "Iron shield",
+        "Rope",
+        "Lock pick",
+        "Birthday cake"
+      ]
+    }
+  },
+  "items": {
+    "rock": {
+      "desc": "A small rock. No bigger than your palm.",
+      "value": 10
+    },
+    "walking_stick": {
+      "desc": "A well worn but smooth walking stick.",
+      "value": 25
+    },
+    "wanted_poster": {
+      "desc": "It reads: \"WANTED: Garunthel, arch-demon of destruction. Preferably dead. REWARD: To be negotiated.\"",
+      "value": 5
+    },
+    "tavern_key": {
+      "desc": "The key to the town tavern",
+      "value": 10
+    },
+    "iron_sword": {
+      "desc": "A sharp iron sword. Looks like it could cut through flesh pretty quickly!",
+      "value": 50
+    },
+    "iron_shield": {
+      "desc": "A well build iron shield. Great for protecting myself.",
+      "value": 50
+    },
+    "rope": {
+      "desc": "About 20m worth of rope in a ring.",
+      "value": 15
+    },
+    "lock_pick": {
+      "desc": "A metal lock picking device.",
+      "value": 40
+    },
+    "birthday_cake": {
+      "desc": "A triple layered birthday cake. Looks delicious!",
+      "value": 25
+    }
+  },
+  "paths": [
+    "north",
+    "south",
+    "east",
+    "west"
+  ],
+  "verbs": [
+    "move",
+    "go",
+    "pick",
+    "take",
+    "look",
+    "show",
+    "use"
+  ],
+  "nouns": [
+    "rock",
+    "walking_stick",
+    "wanted_poster",
+    "tavern_key",
+    "iron_sword",
+    "iron_shield",
+    "rope",
+    "lock_pick",
+    "birthday_cake",
+    "old_man",
+    "town_guard",
+    "bar_tender",
+    "general_store_manager"
+  ]
+}

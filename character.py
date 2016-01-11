@@ -1,11 +1,10 @@
 class Character(object):
 
-    def __init__(self, name, desc, hp, coins):
+    def __init__(self, name, desc, coins=100):
         self.name = name
         self.desc = desc
-        self.hp = hp
-        self.coins = coins
         self.items = []
+        self.coins = coins
         self.is_alive = True
         self.current_location = None
 
@@ -31,9 +30,10 @@ class Character(object):
         self.is_alive = False
         return
 
+
 class Player(Character):
-    def __init__(self, name=None, desc=None, hp=100, coins=100):
-        super(Player, self).__init__(name, desc, hp, coins)
+    def __init__(self, name=None, desc=None, coins=100):
+        super(Player, self).__init__(name, desc, coins)
         self.player = True
         self.is_victorious = False
 
@@ -86,8 +86,8 @@ class Player(Character):
 
 class Npc(Character):
 
-    def __init__(self, name=None, desc=None, hp=50, coins=100):
-        super(Npc, self).__init__(name, desc, hp, coins)
+    def __init__(self, name=None, desc=None, coins=100):
+        super(Npc, self).__init__(name, desc, coins)
 
     def dialogue(self):
         pass
@@ -95,8 +95,8 @@ class Npc(Character):
 
 class Enemy(Character):
 
-    def __init__(self, name, desc, hp, coins):
-        super(Enemy, self).__init__(name, desc, hp, coins)
+    def __init__(self, name, desc, coins):
+        super(Enemy, self).__init__(name, desc, coins)
         self.can_fight = True
 
 

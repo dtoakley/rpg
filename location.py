@@ -1,11 +1,11 @@
 class Location(object):
 
-    def __init__(self, name, desc):
+    def __init__(self, name, desc, paths={}):
         self.name = name
         self.desc = desc
         self.items = []
         self.characters = []
-        self.paths = {}
+        self.paths = paths
         self.first_time = True
 
     def add_item(self, item):

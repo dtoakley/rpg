@@ -8,7 +8,7 @@ from lexicon import *
 
 class TestPlayer(unittest.TestCase):
 
-    player = Player("hero", "i'm so brave", 50, 100)
+    player = Player("hero", "i'm so brave", 100)
     rome = Location("rome", "the pizza is good here")
     london = Location("london", "you're in britain")
     sword = Item("sword", "ouch i'm sharp!")
@@ -31,8 +31,8 @@ class TestPlayer(unittest.TestCase):
         self.assertEqual(["sword", "shield"], self.player.get_inventory())
 
     def test_set_player_name(self):
-        self.player.set_player_name("new name", "game name")
-        self.assertEqual("new name", self.player.name)
+        self.player.set_player_name("dlt", "Winterforge")
+        self.assertEqual("dlt", self.player.name)
 
     def test_set_location(self):
 
@@ -67,7 +67,7 @@ class TestPlayer(unittest.TestCase):
 
 class TestEnemy(unittest.TestCase):
 
-    enemy = Enemy("test enemy", "grr i'm a test enemy", 25, 50)
+    enemy = Enemy("test enemy", "grr i'm a test enemy", 50)
 
     def test_new_enemy(self):
 
