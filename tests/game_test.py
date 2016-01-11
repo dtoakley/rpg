@@ -5,39 +5,38 @@ from item import *
 from location import *
 from lexicon import *
 from game import *
-from itertools import chain
 
 
 class TestGame(unittest.TestCase):
     game = Game("Winterforge")
-    game.build('test_game_data.json')
+    game_data = game.get_and_parse_game_data('test_game_data.json')
+    game.build_game(game_data)
 
     def tests_get_and_parse_game_data(self):
-        items, characters, locations = self.game.get_and_parse_game_data('test_game_data.json')
+        # gets data from json file and returns it as a dict.
 
-        self.assertTrue(len(items), 10)
-        self.assertTrue(type(characters), dict)
-        self.assertIn("tavern", locations)
-        self.assertIn("paths", locations["general_store"])
-        self.assertNotIn("wonderland", locations)
+        self.assertEqual(type(self.game_data), list)
+        # TODO add more tests for parser
+
 
     def test_add_locations(self):
-        locations = self.game.locations
-        location_names = []
+        # takes game data, build location objects and adds them to the game
 
-        self.assertEqual(len(locations), 4)
-
-        for location in locations:
-            self.assertIsInstance(location, Location)
-            location_names.append(location.name)
-
-        self.assertEqual(location_names, ['Tavern', 'Front gate', 'Main street', 'General store'])
+        self.assertEqual(len(self.game.locations), 4)
+        self.assertEqual(self.game.locations[0].name, "Front gate")
 
     def test_add_characters(self):
-        pass
+        # takes game data, builds character objects and adds them to locations
+        self.assertEqual(self.game.locations[0].characters[0].name, "Town guard")
+        self.assertEqual(self.game.locations[1].characters[1].name, "Young boy")
+        self.assertEqual(self.game.locations[3].characters[0].name, "General store manager")
 
     def test_add_items(self):
-        pass
+
+        self.assertEqual(self.game.locations[0].characters[0].items[0].name, "Town key")
+        self.assertEqual(self.game.locations[1].characters[1].items[0].name, "Yo yo")
+        self.assertEqual(self.game.locations[2].characters[0].items[0].name, "Tavern key")
+        self.assertEqual(self.game.locations[3].items[0].name, "Wanted poster")
 
     def test_parse_underscore_string(self):
         string = "name_with_underscores"
