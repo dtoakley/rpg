@@ -1,36 +1,33 @@
 
 class Lexicon(object):
 
-    def __init__(self, paths, verbs, nouns, ignores):
+    def __init__(self, paths, verbs, ignores):
         self.vocab = {}
 
         for path in paths:
-            self.vocab.update({"path": path})
+            self.vocab.update({path: "path"})
 
         for verb in verbs:
-            self.vocab.update({"verb": verb})
-
-        for noun in nouns:
-            self.vocab.update({"noun": noun})
+            self.vocab.update({verb: "verb"})
 
         for ignore in ignores:
-            self.vocab.update({"ignore": ignore})
+            self.vocab.update({ignore: "ignore"})
 
-    def convert_sentence_to_action(self, sentence):
+    def get_action_from_sentence(self, sentence):
 
         words = sentence.split()
-        result = {}
+        result = []
 
         for word in words:
             try:
                 word_lower = word.lower()
-                result.update({self.vocab[word_lower]: word_lower})
+                result.append((self.vocab[word_lower], word_lower))
             except KeyError:
                 if word.isdigit():
                     number = int(word)
-                    result.update({"number": number})
+                    result.append(("number", number))
                 else:
-                    result.update({"error": word})
+                    result.append(("error", word))
 
         return result
 

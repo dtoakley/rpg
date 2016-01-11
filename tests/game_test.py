@@ -16,8 +16,7 @@ class TestGame(unittest.TestCase):
         # gets data from json file and returns it as a dict.
 
         self.assertEqual(type(self.game_data), list)
-        # TODO add more tests for parser
-
+        # TODO more parser tests
 
     def test_add_locations(self):
         # takes game data, build location objects and adds them to the game

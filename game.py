@@ -18,8 +18,9 @@ class Game(object):
         input = raw_input(prompt + " ")
         return input
 
-    def build(self, game_data):
-        pass
+    @staticmethod
+    def parse_underscore_string(name):
+        return name.capitalize().replace("_", " ")
 
     def get_and_parse_game_data(self, game_data):
         # parses returns JSON game data
@@ -62,7 +63,7 @@ class Game(object):
 
     def byteify(self, data_input):
         if isinstance(data_input, dict):
-            return {self.byteify(key):self.byteify(value) for key, value in data_input.iteritems()}
+            return {self.byteify(key): self.byteify(value) for key, value in data_input.iteritems()}
         elif isinstance(data_input, list):
             return [self.byteify(element) for element in data_input]
         elif isinstance(data_input, unicode):
@@ -70,16 +71,12 @@ class Game(object):
         else:
             return data_input
 
-    @staticmethod
-    def parse_underscore_string(name):
-        return name.capitalize().replace("_", " ")
-
     # game loop
-    def play(self, lexicon, first_location):
+    def play(self, first_location):
+        lexicon = Lexicon()
         player = Player()
         player.set_player_name(self.get_player_input("What is your name, young adventurer?"), self.name)
         player.set_location(first_location)
-
         first_location.add_character(player)
 
         while player.is_alive and not player.is_victorious:
