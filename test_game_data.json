@@ -124,5 +124,28 @@
         }
       ]
     }
-  ]
+  ],
+  "lexicon": {
+    "paths": [
+      "north",
+      "south",
+      "east",
+      "west"
+    ],
+    "verbs": [
+      "move",
+      "go",
+      "pick",
+      "take",
+      "look",
+      "show",
+      "use"
+    ],
+    "ignores": [
+      "the",
+      "in",
+      "at",
+      "of"
+    ]
+  }
 }

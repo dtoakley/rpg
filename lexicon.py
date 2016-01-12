@@ -21,7 +21,10 @@ class Lexicon(object):
         for word in words:
             try:
                 word_lower = word.lower()
-                result.append((self.vocab[word_lower], word_lower))
+                if self.vocab[word_lower]:
+                    result.append((self.vocab[word_lower], word_lower))
+                else:
+                    result.append("noun", word_lower)
             except KeyError:
                 if word.isdigit():
                     number = int(word)

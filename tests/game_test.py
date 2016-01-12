@@ -9,7 +9,8 @@ from game import *
 
 class TestGame(unittest.TestCase):
     game = Game("Winterforge")
-    game_data = game.get_and_parse_game_data('test_game_data.json')
+    game_data = game.get_and_parse_json_data('test_game_data.json', 'locations')
+    lexicon_data = game.get_and_parse_json_data('test_game_data.json', 'lexicon')
     game.build_game(game_data)
 
     def tests_get_and_parse_game_data(self):
@@ -42,5 +43,7 @@ class TestGame(unittest.TestCase):
         self.assertEqual("Name with underscores", self.game.parse_underscore_string(string))
 
     def test_play(self):
+        # lexicon = Lexicon(self.lexicon_data.get('paths'), self.lexicon_data.get('verbs'),
+        #                   self.lexicon_data.get('ignores'))
+        # self.game.play(lexicon, self.game.locations[0])
         pass
-        #self.game.play()

@@ -8,13 +8,13 @@ from lexicon import *
 
 class TestLexicon(unittest.TestCase):
     paths = ["north", "south", "east", "west"]
-    verbs = ["eat", "move", "drink", "look", "pick"]
+    verbs = ["look", "show", "take", "use", "move", "pick"]
     ignores = ["the", "in", "at", "of"]
     lexicon = Lexicon(paths, verbs, ignores)
 
     def test_lexicon_init(self):
 
-        self.assertEqual(len(self.lexicon.vocab), 13)
+        self.assertEqual(len(self.lexicon.vocab), 14)
         self.assertTrue(self.lexicon.vocab.get('north'), 'path')
         self.assertFalse("cat" in self.lexicon.vocab)
         self.assertTrue("look" in self.lexicon.vocab)
@@ -27,8 +27,8 @@ class TestLexicon(unittest.TestCase):
 
     def test_verbs(self):
         self.assertEqual(self.lexicon.get_action_from_sentence("move"), [('verb', 'move')])
-        result = self.lexicon.get_action_from_sentence("look drink eat")
-        self.assertEqual(result, [('verb', 'look'), ('verb', 'drink'), ('verb', 'eat')])
+        result = self.lexicon.get_action_from_sentence("look use pick")
+        self.assertEqual(result, [('verb', 'look'), ('verb', 'use'), ('verb', 'pick')])
 
     def test_ignores(self):
         self.assertEqual(self.lexicon.get_action_from_sentence("the"), [('ignore', 'the')])
@@ -42,6 +42,5 @@ class TestLexicon(unittest.TestCase):
 
     def test_errors(self):
         self.assertEqual(self.lexicon.get_action_from_sentence("ASDFADFASDF"), [('error', 'ASDFADFASDF')])
-        result = self.lexicon.get_action_from_sentence("drink IAS")
-        self.assertEqual(result, [('verb', 'drink'), ('error', 'IAS')])
-
+        result = self.lexicon.get_action_from_sentence("take IAS")
+        self.assertEqual(result, [('verb', 'take'), ('error', 'IAS')])

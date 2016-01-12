@@ -6,7 +6,7 @@ locations[0]
     desc = A small rock. No bigger than your palm.
     value n = 10
   characters[0]
-    name = town_gaurd
+    name = town_guard
     desc = He's standing in front of the town gate. Looks angry...
     items[0]
       name = town_key
@@ -78,3 +78,7 @@ locations[3]
       name = birthday_cake
       desc = A triple layered birthday cake. Looks delicious!
       value n = 25
+lexicon
+  paths [] = north, south, east, west
+  verbs [] = move, go, pick, take, look, show, use
+  ignores [] = the, in, at, of

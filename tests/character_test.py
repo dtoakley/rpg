@@ -41,13 +41,9 @@ class TestPlayer(unittest.TestCase):
 
     def test_process_action(self):
 
-        move_action = {"verb": "move", "path": "north"}
-        pick_up_action = {"verb": "pick", "noun": "sword"}
-        look_at_action = {"verb": "look", "path": "north"}
-
-        processed_move_action = self.player.process_action(move_action)
-        processed_pick_up_action = self.player.process_action(pick_up_action)
-        processed_look_at_action = self.player.process_action(look_at_action)
+        processed_move_action = self.player.process_action([("verb", "move"), ("path", "north")])
+        processed_pick_up_action = self.player.process_action([("verb", "pick"), ("noun", "sword")])
+        processed_look_at_action = self.player.process_action([("verb", "look"), ("path", "north")])
 
         self.assertEqual(processed_move_action, {"move", self.london})
         self.assertEqual(processed_pick_up_action, {"add_item", self.sword})

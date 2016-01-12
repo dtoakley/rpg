@@ -22,11 +22,10 @@ class Game(object):
     def parse_underscore_string(name):
         return name.capitalize().replace("_", " ")
 
-    def get_and_parse_game_data(self, game_data):
-        # parses returns JSON game data
-        with open(game_data) as data_file:
+    def get_and_parse_json_data(self, data, data_type):
+        with open(data) as data_file:
             json_game_data = self.byteify(json.load(data_file))
-            return json_game_data['locations']
+            return json_game_data[data_type]
 
     def build_game(self, game_data):
 
@@ -72,8 +71,7 @@ class Game(object):
             return data_input
 
     # game loop
-    def play(self, first_location):
-        lexicon = Lexicon()
+    def play(self, lexicon, first_location):
         player = Player()
         player.set_player_name(self.get_player_input("What is your name, young adventurer?"), self.name)
         player.set_location(first_location)
@@ -84,8 +82,9 @@ class Game(object):
             location.load()
 
             if player.is_alive and not player.is_victorious:
-                action = lexicon.convert_sentence_to_action(self.get_player_input())
-                print action
+                action_desc = lexicon.get_action_from_sentence(self.get_player_input())
+                action_to_do = player.process_action(action_desc)
+                player.do_action(action_to_do)
 
 
 
