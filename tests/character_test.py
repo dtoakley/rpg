@@ -28,7 +28,7 @@ class TestPlayer(unittest.TestCase):
     def test_get_inventory(self):
 
         self.player.add_item(self.shield)
-        self.assertEqual(["sword", "shield"], self.player.get_inventory())
+        self.assertEqual(["shield"], self.player.get_inventory())
 
     def test_set_player_name(self):
         self.player.set_player_name("dlt", "Winterforge")
@@ -38,27 +38,6 @@ class TestPlayer(unittest.TestCase):
 
         self.player.set_location(self.london)
         self.assertEqual(self.london, self.player.current_location)
-
-    def test_process_action(self):
-
-        processed_move_action = self.player.process_action([("verb", "move"), ("path", "north")])
-        processed_pick_up_action = self.player.process_action([("verb", "pick"), ("noun", "sword")])
-        processed_look_at_action = self.player.process_action([("verb", "look"), ("path", "north")])
-
-        self.assertEqual(processed_move_action, {"move", self.london})
-        self.assertEqual(processed_pick_up_action, {"add_item", self.sword})
-        self.assertEqual(processed_look_at_action, {"look_at", self.london})
-
-    def test_do_action(self):
-
-        self.player.do_action("move", self.london)
-        self.assertEqual(self.player.current_location, self.london)
-
-        self.player.do_action("move", self.rome)
-        self.assertEqual(self.player.current_location, self.rome)
-
-        self.player.do_action("add_item", self.sword)
-        self.assertTrue(self.sword in self.player.items)
 
 
 class TestEnemy(unittest.TestCase):

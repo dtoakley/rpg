@@ -22,15 +22,15 @@ class Lexicon(object):
             try:
                 word_lower = word.lower()
                 if self.vocab[word_lower]:
-                    result.append((self.vocab[word_lower], word_lower))
+                    result.append({self.vocab[word_lower]: word_lower})
                 else:
-                    result.append("noun", word_lower)
+                    result.append({"noun": word_lower})
             except KeyError:
                 if word.isdigit():
                     number = int(word)
-                    result.append(("number", number))
+                    result.append({"number": number})
                 else:
-                    result.append(("error", word))
+                    result.append({"error": word})
 
         return result
 
