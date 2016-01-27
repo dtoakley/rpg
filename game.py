@@ -1,5 +1,6 @@
 from character import *
-from lexicon import *
+from parse import *
+from verb import *
 from location import *
 from item import *
 import json
@@ -71,8 +72,9 @@ class Game(object):
             return data_input
 
     # game loop
-    def play(self, lexicon, first_location):
+    def play(self):
         player = Player()
+        first_location = self.locations[0]
         player.set_player_name(self.get_player_input("What is your name, young adventurer?"), self.name)
         player.set_location(first_location)
         first_location.add_character(player)
@@ -80,11 +82,13 @@ class Game(object):
         while player.is_alive and not player.is_victorious:
             location = player.current_location
             location.load()
+            parser = Parser(self.player, location)
 
             if player.is_alive and not player.is_victorious:
-                action_desc = lexicon.get_action_from_sentence(self.get_player_input())
-                action_to_do = player.process_action(action_desc)
-                player.do_action(action_to_do)
+                parsed_action = parser.parse(self.get_player_input())
+                print parsed_action
+
+
 
 
 

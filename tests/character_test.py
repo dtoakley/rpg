@@ -3,7 +3,8 @@ import unittest
 from character import *
 from item import *
 from location import *
-from lexicon import *
+from verb import *
+from parse import *
 
 
 class TestPlayer(unittest.TestCase):
@@ -11,8 +12,8 @@ class TestPlayer(unittest.TestCase):
     player = Player("hero", "i'm so brave", 100)
     rome = Location("rome", "the pizza is good here")
     london = Location("london", "you're in britain")
-    sword = Item("sword", "ouch i'm sharp!")
-    shield = Item("shield", "i'm protect you")
+    sword = Weapon("sword", "ouch i'm sharp!", 100, 20)
+    shield = Armour("shield", "i'm protect you", 50, 50)
     man = Npc("man", "he's carrying a cool walking stick")
 
     player.set_location(rome)

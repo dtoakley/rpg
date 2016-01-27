@@ -4,11 +4,13 @@ from character import *
 from item import *
 from location import *
 from verb import *
+from parse import *
 
 
 class VerbTest(unittest.TestCase):
-    sword = Item("sword", "ouch it's sharp!")
+    sword = Weapon("sword", "ouch it's sharp!", 100, 20)
     player = Player("hero", "i'm so brave", 100)
+    rome = Location("rome", "the pizza is good here")
 
     def test_pickup(self):
 
@@ -23,17 +25,20 @@ class VerbTest(unittest.TestCase):
 
     def test_lookat(self):
 
-        look_at_action = LookAt(self.player, self.sword)
+        look_at_sword_action = LookAt(self.player, self.sword)
+        look_at_rome_action = LookAt(self.player, self.rome)
 
-        self.assertEqual(look_at_action.obj, self.sword)
-        self.assertEqual(look_at_action.subj, self.player)
+        self.assertEqual(look_at_sword_action.look_at(), "ouch it's sharp!")
+        self.assertEqual(look_at_rome_action.look_at(), "the pizza is good here")
 
-        self.assertEqual(look_at_action.look_at(), "ouch it's sharp!")
+    def test_use(self):
+
+        use_action = Use(self.player, self.sword)
+
+        use_action.use()
+        self.assertEqual(self.player.equipped, self.sword)
 
 
-        #TODO get/take
-        #TODO use ITEM
 
-        #TODO Look/show
 
 

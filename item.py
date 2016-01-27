@@ -14,10 +14,10 @@ class Weapon(Item):
         self.damage = damage
 
 
-class Armor(Item):
+class Armour(Item):
 
     def __init__(self, name, desc, value, added_hp):
-        super(Armor, self).__init__(name, desc, value)
+        super(Armour, self).__init__(name, desc, value)
         self.added_hp = added_hp
 
 
@@ -28,12 +28,18 @@ class Potion(Item):
         self.effect = effect
         self.time_period = time_period
 
+    def drink(self):
+        print "you drank" + self.name
+
 
 class Food(Item):
 
     def __init__(self, name, desc, value, restored_hp):
         super(Food, self).__init__(name, desc, value)
         self.restored_hp = restored_hp
+
+    def eat(self):
+        print "You ate " + self.name
 
 
 class StoryItem(Item):

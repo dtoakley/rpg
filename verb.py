@@ -1,3 +1,4 @@
+
 class Verb(object):
 
     def __init__(self, subj, obj):
@@ -39,13 +40,22 @@ class Use(Verb):
         super(Use, self).__init__(subj, obj)
 
     def use(self):
-
         try:
-            self.action(self.obj.use)
+            self.action(self.subj.use)
         except AttributeError:
             print "You can't use that object!"
 
 
+class Move(Verb):
+
+    def __init__(self, subj, obj):
+        super(Move, self).__init__(subj, obj)
+
+    def move(self):
+        try:
+            self.action(self.subj.move)
+        except AttributeError:
+            print "You can't move in that direction!"
 
 
 

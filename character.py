@@ -1,3 +1,6 @@
+from item import *
+
+
 class Character(object):
 
     def __init__(self, name, desc, coins=100):
@@ -7,6 +10,7 @@ class Character(object):
         self.coins = coins
         self.is_alive = True
         self.current_location = None
+        self.equipped = None
 
     def add_item(self, item):
         self.items.append(item)
@@ -30,6 +34,11 @@ class Character(object):
         self.is_alive = False
         return
 
+    def equip_item(self, item):
+        self.equipped = item
+        print item.name + " equipped!"
+        return item
+
 
 class Player(Character):
     def __init__(self, name=None, desc=None, coins=100):
@@ -41,6 +50,14 @@ class Player(Character):
         self.name = name
         print "Welcome to " + game_name + ", " + self.name
         return name
+
+    def use(self, item):
+        if isinstance(item, Weapon or Armour):
+            self.equip_item(item)
+        elif isinstance(item, Potion):
+            item.drink()
+        elif isinstance(item, Food):
+            item.eat()
 
 
 class Npc(Character):

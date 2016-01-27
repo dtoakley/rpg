@@ -22,24 +22,19 @@ class Location(object):
 
     def get_item(self, item_name):
         for item in self.items:
-            if item.name == item_name:
+            if item_name == item.name or item_name == item.name.capitalize():
                 return item
-            else:
-                pass
 
     def get_character(self, character_name):
         for character in self.characters:
-            if character.name == character_name:
+            if character_name == character.name or character_name == character.name.capitalize():
                 return character
-            else:
-                pass
 
     def search_objects(self, name):
-        for obj in [self.characters, self.items, self.paths]:
-            if name in obj:
-                return obj
-            else:
-                pass
+        for objs in [self.characters, self.items]:
+            for item in objs:
+                if name == item.name or name.capitalize() == item.name:
+                    return item
 
     def get_desc(self):
         return self.desc
