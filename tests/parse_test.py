@@ -13,7 +13,7 @@ class ParseTest(unittest.TestCase):
     sword = Weapon("sword", "ouch it's sharp!", 100, 20)
     rome = Location("rome", "the pizza is good here")
     london = Location("london", "time for some fish and chips")
-    shield = Armour("shield", "i'm protect you", 50, 50)
+    shield = Armour("shield", "i'll protect you", 50, 50)
     rome.add_item(sword)
     rome.add_item(shield)
     rome.add_path({"north": london})

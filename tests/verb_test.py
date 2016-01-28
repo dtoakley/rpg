@@ -18,36 +18,25 @@ class VerbTest(unittest.TestCase):
 
     def test_pickup(self):
 
-        pick_up_action = PickUp(self.player, self.sword)
-
-        self.assertEqual(pick_up_action.obj, self.sword)
-        self.assertEqual(pick_up_action.subj, self.player)
-
-        pick_up_action.pick_up()
+        PickUp(self.player, self.sword)
 
         self.assertEqual(self.player.get_inventory(), ["sword"])
 
     def test_lookat(self):
+        # TODO add look at tests
 
-        look_at_sword_action = LookAt(self.player, self.sword)
-        look_at_rome_action = LookAt(self.player, self.rome)
-
-        self.assertEqual(look_at_sword_action.look_at(), "ouch it's sharp!")
-        self.assertEqual(look_at_rome_action.look_at(), "the pizza is good here")
+        pass
 
     def test_use(self):
 
-        use_action = Use(self.player, self.sword)
-        use_action.use()
+        Use(self.player, self.sword)
         self.assertEqual(self.player.equipped, self.sword)
 
     def test_move(self):
 
-        move_north_action = Move(self.player, self.london)
-
         self.assertEqual(self.player.current_location, self.rome)
 
-        move_north_action.move()
+        Move(self.player, self.london)
 
         self.assertEqual(self.player.current_location, self.london)
 

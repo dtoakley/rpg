@@ -89,7 +89,6 @@ class Game(object):
         player = Player()
         first_location = self.locations[0]
         player.set_player_name(self.get_player_input("What is your name, young adventurer?"), self.name)
-        player.name
         player.set_location(first_location)
         first_location.add_character(player)
 
@@ -100,8 +99,7 @@ class Game(object):
             parser = Parser(player, location)
 
             if player.is_alive and not player.is_victorious:
-                parsed_action = parser.parse(self.get_player_input())
-                parsed_action.move()
+                parser.parse(self.get_player_input())
                 print player.current_location.name
 
 

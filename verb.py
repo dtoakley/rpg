@@ -13,8 +13,6 @@ class PickUp(Verb):
 
     def __init__(self, subj, obj):
         super(PickUp, self).__init__(subj, obj)
-
-    def pick_up(self):
         try:
             self.action(self.subj.add_item)
         except AttributeError:
@@ -25,11 +23,8 @@ class LookAt(Verb):
 
     def __init__(self, subj, obj):
         super(LookAt, self).__init__(subj, obj)
-
-    def look_at(self):
         try:
             print self.obj.desc
-            return self.obj.desc
         except AttributeError:
             print "no description!"
 
@@ -38,8 +33,6 @@ class Use(Verb):
 
     def __init__(self, subj, obj):
         super(Use, self).__init__(subj, obj)
-
-    def use(self):
         try:
             self.action(self.subj.use)
         except AttributeError:
@@ -50,8 +43,6 @@ class Move(Verb):
 
     def __init__(self, subj, obj):
         super(Move, self).__init__(subj, obj)
-
-    def move(self):
         try:
             self.action(self.subj.move)
         except AttributeError:
