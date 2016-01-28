@@ -50,5 +50,5 @@ class TestGame(unittest.TestCase):
         self.assertEqual(self.game.locations[3].paths.get('east').name, "Main street")
 
     def test_play(self):
-        #self.game.play()
+        self.game.play()
         pass

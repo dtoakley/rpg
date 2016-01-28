@@ -35,8 +35,8 @@ locations[1]
   paths
     south = Front gate
     east = Tavern
-    north = Town Center
-    west = General Store
+    north = Town center
+    west = General store
 locations[2]
   name = tavern
   desc = A warm and bustling place. I wonder if I can find work here.

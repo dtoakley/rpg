@@ -97,10 +97,11 @@ class Game(object):
             location = player.current_location
             location.load()
             parser = Parser(player, location)
+            parser.parse(self.get_player_input())
 
-            if player.is_alive and not player.is_victorious:
-                parser.parse(self.get_player_input())
-                print player.current_location.name
+
+
+
 
 
 
