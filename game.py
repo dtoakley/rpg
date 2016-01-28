@@ -33,6 +33,7 @@ class Game(object):
         for location, data in enumerate(game_data):
             loc_characters = data.get('characters')
             loc_items = data.get('items')
+
             loc_obj = self.build_object(data, Location, 'paths')
 
             for character in loc_characters:
@@ -49,6 +50,18 @@ class Game(object):
                 loc_obj.add_item(loc_item_obj)
 
             self.locations.append(loc_obj)
+
+        #replaces path string references with location objects
+
+        for location in self.locations:
+            for direction, value in location.paths.iteritems():
+                path_obj = self.get_location(value)
+                location.paths[direction] = path_obj
+
+    def get_location(self, name):
+        for location in self.locations:
+            if location.name == name:
+                return location
 
     def build_object(self, data, cls, attr=None):
         obj_name = self.parse_underscore_string(data.get('name'))
@@ -76,17 +89,22 @@ class Game(object):
         player = Player()
         first_location = self.locations[0]
         player.set_player_name(self.get_player_input("What is your name, young adventurer?"), self.name)
+        player.name
         player.set_location(first_location)
         first_location.add_character(player)
 
         while player.is_alive and not player.is_victorious:
+
             location = player.current_location
             location.load()
-            parser = Parser(self.player, location)
+            parser = Parser(player, location)
 
             if player.is_alive and not player.is_victorious:
                 parsed_action = parser.parse(self.get_player_input())
-                print parsed_action
+                parsed_action.move()
+                print player.current_location.name
+
+
 
 
 

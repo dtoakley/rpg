@@ -58,8 +58,8 @@
       "paths": {
         "south": "Front gate",
         "east": "Tavern",
-        "north": "Town Center",
-        "west": "General Store"
+        "north": "Town center",
+        "west": "General store"
       }
     },
     {

@@ -6,7 +6,7 @@ class Verb(object):
         self.obj = obj
 
     def action(self, func):
-        return func(self.obj)
+        func(self.obj)
 
 
 class PickUp(Verb):
@@ -31,7 +31,7 @@ class LookAt(Verb):
             print self.obj.desc
             return self.obj.desc
         except AttributeError:
-            print self.subj.name + "has no description!"
+            print "no description!"
 
 
 class Use(Verb):

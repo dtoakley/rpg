@@ -41,6 +41,14 @@ class TestGame(unittest.TestCase):
         string = "name_with_underscores"
         self.assertEqual("Name with underscores", self.game.parse_underscore_string(string))
 
+    def test_add_paths(self):
+
+        print self.game.locations[0].paths.get('north').name
+        self.assertEqual(self.game.locations[0].paths.get('north').name, "Main street")
+        self.assertEqual(self.game.locations[1].paths.get('west').name, "General store")
+        self.assertEqual(self.game.locations[2].paths.get('west').name, "Main street")
+        self.assertEqual(self.game.locations[3].paths.get('east').name, "Main street")
+
     def test_play(self):
-        #self.game.play()
+        self.game.play()
         pass
