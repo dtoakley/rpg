@@ -11,6 +11,10 @@ class VerbTest(unittest.TestCase):
     sword = Weapon("sword", "ouch it's sharp!", 100, 20)
     player = Player("hero", "i'm so brave", 100)
     rome = Location("rome", "the pizza is good here")
+    london = Location("london", "time for fish and chips?")
+    rome.add_path({"north": london})
+    rome.add_character(player)
+    player.set_location(rome)
 
     def test_pickup(self):
 
@@ -34,9 +38,18 @@ class VerbTest(unittest.TestCase):
     def test_use(self):
 
         use_action = Use(self.player, self.sword)
-
         use_action.use()
         self.assertEqual(self.player.equipped, self.sword)
+
+    def test_move(self):
+
+        move_north_action = Move(self.player, self.london)
+
+        self.assertEqual(self.player.current_location, self.rome)
+
+        move_north_action.move()
+
+        self.assertEqual(self.player.current_location, self.london)
 
 
 
