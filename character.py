@@ -27,8 +27,10 @@ class Character(object):
         return self.current_location
 
     def move(self, location):
-        self.set_location(location)
-        return
+        if location.can_travel:
+            self.set_location(location)
+        else:
+            print "you can't go there yet!"
 
     def death(self):
         self.is_alive = False
@@ -50,14 +52,6 @@ class Player(Character):
         self.name = name
         print "Welcome to " + game_name + ", " + self.name
         return name
-
-    def use(self, item):
-        if isinstance(item, Weapon or Armour):
-            self.equip_item(item)
-        elif isinstance(item, Potion):
-            item.drink()
-        elif isinstance(item, Food):
-            item.eat()
 
 
 class Npc(Character):

@@ -7,7 +7,7 @@ class Parser(object):
         self.player = player
         self.location = location
         self.pickup = ["take", "pickup", "get", "grab"]
-        self.lookat = ["look", "show", "see", "check"]
+        self.lookat = ["lookat", "show", "see", "check"]
         self.use = ["use", "wield", "hold", "throw", "give"]
         self.move = ["go", "move", "walk", "travel"]
 

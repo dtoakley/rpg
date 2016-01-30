@@ -1,12 +1,12 @@
 locations[0]
   name = front_gate
-  desc = You're outside the front gate of town. It seems to be locked. An town gaurd is standing nearby.
+  desc = You're outside the front gate of town. A town guard is iun front of it and a rock is on the floor nearby.
   items[0]
     name = rock
     desc = A small rock. No bigger than your palm.
     value n = 10
   characters[0]
-    name = town_guard
+    name = guard
     desc = He's standing in front of the town gate. Looks angry...
     items[0]
       name = town_key
@@ -14,6 +14,11 @@ locations[0]
       value n = 20
   paths
     north = Main street
+  event
+    action_verb = use
+    action_object = rock
+    reaction_object = Main street
+    reaction_verb = can_travel
 locations[1]
   name = main_street
   desc = The main street of town, with the town center up ahead. To your left is the General Store, and the Tavern is on your right.

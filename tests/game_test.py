@@ -26,7 +26,7 @@ class TestGame(unittest.TestCase):
 
     def test_add_characters(self):
         # takes game data, builds character objects and adds them to locations
-        self.assertEqual(self.game.locations[0].characters[0].name, "Town guard")
+        self.assertEqual(self.game.locations[0].characters[0].name, "Guard")
         self.assertEqual(self.game.locations[1].characters[1].name, "Young boy")
         self.assertEqual(self.game.locations[3].characters[0].name, "General store manager")
 
@@ -49,6 +49,14 @@ class TestGame(unittest.TestCase):
         self.assertEqual(self.game.locations[2].paths.get('west').name, "Main street")
         self.assertEqual(self.game.locations[3].paths.get('east').name, "Main street")
 
+    def test_add_events(self):
+
+        self.assertTrue(self.game.locations[0].event)
+        self.assertEqual(self.game.locations[0].event.get("action_object"), "rock")
+        self.assertEqual(self.game.locations[0].event.get("action_verb"), "use")
+        self.assertEqual(self.game.locations[0].event.get("reaction_verb"), "can_travel")
+        self.assertEqual(self.game.locations[0].event.get("reaction_object"), "Main street")
+
     def test_play(self):
-        self.game.play()
+        #self.game.play()
         pass

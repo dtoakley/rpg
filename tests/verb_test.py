@@ -27,13 +27,8 @@ class VerbTest(unittest.TestCase):
 
         pass
 
-    def test_use(self):
-
-        Use(self.player, self.sword)
-        self.assertEqual(self.player.equipped, self.sword)
-
     def test_move(self):
-
+        self.london.can_travel = True
         self.assertEqual(self.player.current_location, self.rome)
 
         Move(self.player, self.london)

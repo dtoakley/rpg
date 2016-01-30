@@ -1,12 +1,14 @@
 class Location(object):
 
-    def __init__(self, name, desc, paths={}):
+    def __init__(self, name, desc, paths={}, event=None):
         self.name = name
         self.desc = desc
         self.items = []
         self.characters = []
+        self.event = event
         self.paths = paths
         self.first_time = True
+        self.can_travel = False
 
     def add_item(self, item):
         self.items.append(item)
@@ -45,6 +47,13 @@ class Location(object):
         if self.first_time:
             self.first_time_event()
             self.first_time = False
+
+    def process_event(self, verb):
+        obj_check = verb.obj.name
+        verb_check = verb.__class__.__name__
+        pass
+        # if self.event.action_obj == obj_check and self.event.verb_check == verb_check:
+        #     print "event processing"
 
     def first_time_event(self):
         print "first time event!"

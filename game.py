@@ -34,7 +34,7 @@ class Game(object):
             loc_characters = data.get('characters')
             loc_items = data.get('items')
 
-            loc_obj = self.build_object(data, Location, 'paths')
+            loc_obj = self.build_object(data, Location, ['paths', 'event'])
 
             for character in loc_characters:
                 char_obj = self.build_object(character, Character)
@@ -42,7 +42,7 @@ class Game(object):
                 char_items = character.get('items')
 
                 for char_item in char_items:
-                    char_item_obj = self.build_object(char_item, Item, 'value')
+                    char_item_obj = self.build_object(char_item, Item, ['value'])
                     char_obj.add_item(char_item_obj)
 
             for loc_item in loc_items:
@@ -51,9 +51,11 @@ class Game(object):
 
             self.locations.append(loc_obj)
 
-        #replaces path string references with location objects
+        # replaces path string references with location objects
+        # TODO -- refactor the shit out of this. should be within build_object method
 
         for location in self.locations:
+
             for direction, value in location.paths.iteritems():
                 path_obj = self.get_location(value)
                 location.paths[direction] = path_obj
@@ -63,11 +65,22 @@ class Game(object):
             if location.name == name:
                 return location
 
-    def build_object(self, data, cls, attr=None):
+    def build_object(self, data, cls, attributes=[]):
         obj_name = self.parse_underscore_string(data.get('name'))
         obj_desc = data.get('desc')
-        if attr:
-            obj_attr = data.get(str(attr))
+
+        # TODO -- refactor the shit out of this. way too messy and complex.
+
+        if len(attributes) > 1:
+            for attr in attributes:
+                if attr == 'paths':
+                    obj_attr1 = data.get(str(attr))
+                    print
+                elif attr == 'event':
+                    obj_attr2 = data.get(attr)
+            new_obj = cls(obj_name, obj_desc, obj_attr1, obj_attr2)
+        elif len(attributes) == 1:
+            obj_attr = data.get(str(attributes))
             new_obj = cls(obj_name, obj_desc, obj_attr)
         else:
             new_obj = cls(obj_name, obj_desc)
@@ -98,14 +111,4 @@ class Game(object):
             location.load()
             parser = Parser(player, location)
             parser.parse(self.get_player_input())
-
-
-
-
-
-
-
-
-
-
 

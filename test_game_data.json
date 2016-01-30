@@ -2,7 +2,7 @@
   "locations": [
     {
       "name": "front_gate",
-      "desc": "You're outside the front gate of town. It seems to be locked. An town gaurd is standing nearby.",
+      "desc": "You're outside the front gate of town. A town guard is iun front of it and a rock is on the floor nearby.",
       "items": [
         {
           "name": "rock",
@@ -12,7 +12,7 @@
       ],
       "characters": [
         {
-          "name": "town_guard",
+          "name": "guard",
           "desc": "He's standing in front of the town gate. Looks angry...",
           "items": [
             {
@@ -25,6 +25,12 @@
       ],
       "paths": {
         "north": "Main street"
+      },
+      "event": {
+        "action_verb": "use",
+        "action_object": "rock",
+        "reaction_object": "Main street",
+        "reaction_verb": "can_travel"
       }
     },
     {
