@@ -22,15 +22,26 @@ class Location(object):
         self.paths.update(path)
         return path
 
+    def can_travel(self):
+        self.can_travel = True
+        return True
+
     def get_item(self, item_name):
         for item in self.items:
             if item_name == item.name or item_name == item.name.capitalize():
                 return item
 
+    def get_path(self, path_name):
+        for direction, location in self.paths.iteritems():
+            if location.name == path_name:
+                return location
+
     def get_character(self, character_name):
         for character in self.characters:
             if character_name == character.name or character_name == character.name.capitalize():
                 return character
+
+    # TODO -- refactor to include paths
 
     def search_objects(self, name):
         for objs in [self.characters, self.items]:
@@ -49,11 +60,19 @@ class Location(object):
             self.first_time = False
 
     def process_event(self, verb):
-        obj_check = verb.obj.name
-        verb_check = verb.__class__.__name__
-        pass
-        # if self.event.action_obj == obj_check and self.event.verb_check == verb_check:
-        #     print "event processing"
+        # takes a verb object and executes the event in that location
+
+        object_check = verb.obj.name.lower()
+        verb_check = verb.__class__.__name__.lower()
+
+        print object_check.lower(), verb_check.lower()
+
+        if self.event.get('action_verb') == verb_check and self.event.get('action_object') == object_check:
+            reaction_obj = self.get_path(self.event.get('reaction_object'))
+            reaction_method_name = self.event.get('reaction_verb')
+
+            print reaction_method_name
+
 
     def first_time_event(self):
         print "first time event!"

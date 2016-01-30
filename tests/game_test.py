@@ -9,7 +9,6 @@ from game import *
 class TestGame(unittest.TestCase):
     game = Game("Winterforge")
     game_data = game.get_and_parse_json_data('test_game_data.json', 'locations')
-    lexicon_data = game.get_and_parse_json_data('test_game_data.json', 'lexicon')
     game.build_game(game_data)
 
     def tests_get_and_parse_game_data(self):

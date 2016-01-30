@@ -10,11 +10,12 @@ from parse import *
 class VerbTest(unittest.TestCase):
     sword = Weapon("sword", "ouch it's sharp!", 100, 20)
     player = Player("hero", "i'm so brave", 100)
-    rome = Location("rome", "the pizza is good here")
-    london = Location("london", "time for fish and chips?")
-    rome.add_path({"north": london})
-    rome.add_character(player)
-    player.set_location(rome)
+    front_gate = Location("Front gate", "You're outside the front gate of town. A town guard is in front of it and a rock is on the floor nearby.")
+    main_street = Location("Main street", "The main street of town")
+
+    front_gate.add_path({"north": main_street})
+    front_gate.add_character(player)
+    player.set_location(front_gate)
 
     def test_pickup(self):
 
@@ -28,12 +29,12 @@ class VerbTest(unittest.TestCase):
         pass
 
     def test_move(self):
-        self.london.can_travel = True
-        self.assertEqual(self.player.current_location, self.rome)
+        self.main_street.can_travel = True
+        self.assertEqual(self.player.current_location, self.front_gate)
 
-        Move(self.player, self.london)
+        Move(self.player, self.main_street)
 
-        self.assertEqual(self.player.current_location, self.london)
+        self.assertEqual(self.player.current_location, self.main_street)
 
 
 

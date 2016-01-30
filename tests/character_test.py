@@ -10,17 +10,17 @@ from parse import *
 class TestPlayer(unittest.TestCase):
 
     player = Player("hero", "i'm so brave", 100)
-    rome = Location("rome", "the pizza is good here")
-    london = Location("london", "you're in britain")
+    front_gate = Location("Front gate", "You're outside the front gate of town. A town guard is in front of it and a rock is on the floor nearby.")
+    main_street = Location("Main street", "The main street of town")
     sword = Weapon("sword", "ouch i'm sharp!", 100, 20)
     shield = Armour("shield", "i'll protect you", 50, 50)
     man = Npc("man", "he's carrying a cool walking stick")
 
-    player.set_location(rome)
-    rome.add_path({"north": london})
-    rome.add_item(sword)
-    rome.add_item(shield)
-    rome.add_character(man)
+    player.set_location(front_gate)
+    front_gate.add_path({"north": main_street})
+    front_gate.add_item(sword)
+    front_gate.add_item(shield)
+    front_gate.add_character(man)
 
     def test_new_player(self):
         self.assertTrue(self.player.player)
@@ -37,8 +37,8 @@ class TestPlayer(unittest.TestCase):
 
     def test_set_location(self):
 
-        self.player.set_location(self.london)
-        self.assertEqual(self.london, self.player.current_location)
+        self.player.set_location(self.main_street)
+        self.assertEqual(self.main_street, self.player.current_location)
 
 
 class TestEnemy(unittest.TestCase):

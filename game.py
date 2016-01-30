@@ -75,7 +75,6 @@ class Game(object):
             for attr in attributes:
                 if attr == 'paths':
                     obj_attr1 = data.get(str(attr))
-                    print
                 elif attr == 'event':
                     obj_attr2 = data.get(attr)
             new_obj = cls(obj_name, obj_desc, obj_attr1, obj_attr2)

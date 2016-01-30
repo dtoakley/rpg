@@ -10,15 +10,18 @@ from parse import *
 class ParseTest(unittest.TestCase):
 
     player = Player("hero", "i'm so brave", 100)
+    front_gate = Location("Front gate", "You're outside the front gate of town. A town guard is in front of it and a rock is on the floor nearby.")
+    guard = Npc("guard", "He's standing in front of the town gate. Looks angry...")
+    rock = Item("rock", "A small rock. No bigger than your palm.")
+    main_street = Location("Main street", "The main street of town")
+    shield = Armour("shield", "a solid shield to protect you!", 50, 25)
     sword = Weapon("sword", "ouch it's sharp!", 100, 20)
-    rome = Location("rome", "the pizza is good here")
-    london = Location("london", "time for some fish and chips")
-    shield = Armour("shield", "i'll protect you", 50, 50)
-    rome.add_item(sword)
-    rome.add_item(shield)
-    rome.add_path({"north": london})
     man = Npc("man", "he's carrying a cool walking stick")
-    parser = Parser(player, rome)
+    front_gate.add_item(sword)
+    front_gate.add_item(rock)
+    front_gate.add_item(shield)
+    front_gate.add_path({"north": main_street})
+    parser = Parser(player, front_gate)
 
     def test_parse_pickup(self):
 
@@ -38,7 +41,7 @@ class ParseTest(unittest.TestCase):
 
     def test_parse_use(self):
 
-        use_sentence = "wield sword"
+        use_sentence = "use sword"
         parsed_use = self.parser.parse(use_sentence)
         self.assertTrue(isinstance(parsed_use, Use))
         self.assertEqual(parsed_use.subj, self.player)
@@ -48,9 +51,11 @@ class ParseTest(unittest.TestCase):
 
         move_sentence = "travel north"
         parsed_move = self.parser.parse(move_sentence)
+        print parsed_move.obj.name + " parsed"
         self.assertTrue(isinstance(parsed_move, Move))
         self.assertEqual(parsed_move.subj, self.player)
-        self.assertEqual(parsed_move.obj, self.london)
+        self.assertEqual(parsed_move.obj, self.main_street)
+
 
 
 
