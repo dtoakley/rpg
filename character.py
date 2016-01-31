@@ -14,6 +14,7 @@ class Character(object):
 
     def add_item(self, item):
         self.items.append(item)
+        print "you picked up " + item.name
         return item
 
     def get_inventory(self):

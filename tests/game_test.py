@@ -22,6 +22,8 @@ class TestGame(unittest.TestCase):
 
         self.assertEqual(len(self.game.locations), 4)
         self.assertEqual(self.game.locations[0].name, "Front gate")
+        self.assertTrue(self.game.locations[0].travelable)
+        self.assertFalse(self.game.locations[1].travelable)
 
     def test_add_characters(self):
         # takes game data, builds character objects and adds them to locations

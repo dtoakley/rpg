@@ -34,7 +34,7 @@ class Game(object):
             loc_characters = data.get('characters')
             loc_items = data.get('items')
 
-            loc_obj = self.build_object(data, Location, ['paths', 'event'])
+            loc_obj = self.build_object(data, Location, ['paths', 'event', 'travelable'])
 
             for character in loc_characters:
                 char_obj = self.build_object(character, Character)
@@ -77,7 +77,9 @@ class Game(object):
                     obj_attr1 = data.get(str(attr))
                 elif attr == 'event':
                     obj_attr2 = data.get(attr)
-            new_obj = cls(obj_name, obj_desc, obj_attr1, obj_attr2)
+                elif attr == 'travelable':
+                    obj_attr3 = data.get(attr)
+            new_obj = cls(obj_name, obj_desc, obj_attr1, obj_attr2, obj_attr3)
         elif len(attributes) == 1:
             obj_attr = data.get(str(attributes))
             new_obj = cls(obj_name, obj_desc, obj_attr)
@@ -102,13 +104,17 @@ class Game(object):
         first_location = self.locations[0]
         player.set_player_name(self.get_player_input("What is your name, young adventurer?"), self.name)
         player.set_location(first_location)
-        first_location.add_character(player)
+        first_location.add_player(player)
         first_location.load()
-        while player.is_alive and not player.is_victorious:
 
+        while player.is_alive and not player.is_victorious:
             location = player.current_location
             parser = Parser(player, location)
             action = parser.parse(self.get_player_input())
-            location.process_event(action)
+
+            try:
+                location.process_event(action)
+            except AttributeError:
+                print "that action isn't possible!"
 
 

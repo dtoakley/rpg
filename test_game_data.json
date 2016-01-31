@@ -3,6 +3,7 @@
     {
       "name": "front_gate",
       "desc": "You're outside the front gate of town. A town guard is iun front of it and a rock is on the floor nearby.",
+      "travelable": true,
       "items": [
         {
           "name": "rock",
@@ -37,6 +38,7 @@
     {
       "name": "main_street",
       "desc": "The main street of town, with the town center up ahead. To your left is the General Store, and the Tavern is on your right.",
+      "travelable": false,
       "items": [],
       "characters": [
         {
@@ -72,6 +74,7 @@
     {
       "name": "tavern",
       "desc": "A warm and bustling place. I wonder if I can find work here.",
+      "travelable": true,
       "items": [],
       "characters": [
         {
@@ -93,6 +96,7 @@
     {
       "name": "general_store",
       "desc": "There is a large wanted poster on the wall and collections of weapons and other items around the store.",
+      "travelable": true,
       "items": [
         {
           "name": "wanted_poster",

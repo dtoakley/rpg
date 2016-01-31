@@ -1,6 +1,7 @@
 locations[0]
   name = front_gate
   desc = You're outside the front gate of town. A town guard is iun front of it and a rock is on the floor nearby.
+  travelable = true
   items[0]
     name = rock
     desc = A small rock. No bigger than your palm.
@@ -19,9 +20,11 @@ locations[0]
     action_object = rock
     reaction_object = Main street
     reaction_verb = can_travel
+    reaction_desc = You threw the rock at the guard. it knocked him over in one!
 locations[1]
   name = main_street
   desc = The main street of town, with the town center up ahead. To your left is the General Store, and the Tavern is on your right.
+  travelable = false
   items[0]
   characters[0]
     name = old_man
@@ -45,6 +48,7 @@ locations[1]
 locations[2]
   name = tavern
   desc = A warm and bustling place. I wonder if I can find work here.
+  travelable = true
   items[0]
   characters[0]
     name = bar_tender
@@ -58,6 +62,7 @@ locations[2]
 locations[3]
   name = general_store
   desc = There is a large wanted poster on the wall and collections of weapons and other items around the store.
+  travelable = true
   items[0]
     name = wanted_poster
     desc = It reads: "WANTED: Garunthel, arch-demon of destruction. Preferably dead. REWARD: To be negotiated."

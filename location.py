@@ -1,14 +1,15 @@
 class Location(object):
 
-    def __init__(self, name, desc, paths={}, event=None):
+    def __init__(self, name, desc, paths={}, event=None, travelable=True):
         self.name = name
         self.desc = desc
         self.items = []
         self.characters = []
-        self.event = event
         self.paths = paths
+        self.event = event
+        self.player = None
+        self.travelable = travelable
         self.first_time = True
-        self.travelable = False
 
     def add_item(self, item):
         self.items.append(item)
@@ -17,6 +18,10 @@ class Location(object):
     def add_character(self, character):
         self.characters.append(character)
         return character
+
+    def add_player(self, player):
+        self.player = player
+        return player
 
     def add_path(self, path):
         self.paths.update(path)
@@ -69,9 +74,13 @@ class Location(object):
         reaction_method_name = self.event.get('reaction_verb')
         reaction_desc = self.event.get('reaction_desc')
 
-        if self.event.get('action_verb') == verb_check and self.event.get('action_object') == object_check:
+        if object_check.capitalize() not in self.player.get_inventory():
+            print "You can't use that item!"
+            return
+        elif self.event.get('action_verb') == verb_check and self.event.get('action_object') == object_check:
             getattr(reaction_obj, reaction_method_name)()
             print reaction_desc
+            return
 
     @staticmethod
     def first_time_event():

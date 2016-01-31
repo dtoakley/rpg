@@ -16,6 +16,7 @@ class Parser(object):
 
         words = sentence.split()
         words[1].capitalize()
+        # TODO -- refactor everything below. way too much repetition
 
         if words[0] in self.pickup:
             try:
