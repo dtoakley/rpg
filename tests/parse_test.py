@@ -51,7 +51,6 @@ class ParseTest(unittest.TestCase):
 
         move_sentence = "travel north"
         parsed_move = self.parser.parse(move_sentence)
-        print parsed_move.obj.name + " parsed"
         self.assertTrue(isinstance(parsed_move, Move))
         self.assertEqual(parsed_move.subj, self.player)
         self.assertEqual(parsed_move.obj, self.main_street)

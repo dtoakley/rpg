@@ -40,15 +40,14 @@ class LocationTest(unittest.TestCase):
     def test_process_event(self):
         self.player.add_item(self.rock)
         sentence = "use rock"
-        self.front_gate.event = {"action_verb": "use", "action_object": "rock", "reaction_object": "Main street", "reaction_verb": "can_travel"}
+        self.front_gate.event = {"action_verb": "use", "action_object": "rock", "reaction_object": "Main street", "reaction_verb": "can_travel", "reaction_desc": "You threw the rock at the guard. it knocked him over in one!"}
         parser = Parser(self.player, self.front_gate)
 
         use_action = parser.parse(sentence)
 
         self.front_gate.process_event(use_action)
-
         self.assertTrue(self.front_gate.paths.get('north').travelable)
-        self.assertFalse(self.rock in self.player.items)
+
 
 
 

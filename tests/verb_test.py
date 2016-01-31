@@ -29,7 +29,7 @@ class VerbTest(unittest.TestCase):
         pass
 
     def test_move(self):
-        self.main_street.can_travel = True
+        self.main_street.travelable = True
         self.assertEqual(self.player.current_location, self.front_gate)
 
         Move(self.player, self.main_street)

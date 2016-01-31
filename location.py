@@ -65,14 +65,13 @@ class Location(object):
         object_check = verb.obj.name.lower()
         verb_check = verb.__class__.__name__.lower()
 
+        reaction_obj = self.get_path(self.event.get('reaction_object'))
+        reaction_method_name = self.event.get('reaction_verb')
+        reaction_desc = self.event.get('reaction_desc')
+
         if self.event.get('action_verb') == verb_check and self.event.get('action_object') == object_check:
-
-            reaction_obj = self.get_path(self.event.get('reaction_object'))
-            print reaction_obj
-            reaction_method_name = self.event.get('reaction_verb')
-
             getattr(reaction_obj, reaction_method_name)()
-
+            print reaction_desc
 
     @staticmethod
     def first_time_event():

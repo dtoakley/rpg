@@ -30,7 +30,8 @@
         "action_verb": "use",
         "action_object": "rock",
         "reaction_object": "Main street",
-        "reaction_verb": "can_travel"
+        "reaction_verb": "can_travel",
+        "reaction_desc": "You threw the rock at the guard. it knocked him over in one!"
       }
     },
     {

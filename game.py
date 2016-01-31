@@ -109,5 +109,7 @@ class Game(object):
             location = player.current_location
             location.load()
             parser = Parser(player, location)
-            parser.parse(self.get_player_input())
+            action = parser.parse(self.get_player_input())
+            location.process_event(action)
+
 

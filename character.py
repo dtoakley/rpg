@@ -27,7 +27,7 @@ class Character(object):
         return self.current_location
 
     def move(self, location):
-        if location.can_travel:
+        if location.travelable:
             self.set_location(location)
         else:
             print "you can't go there yet!"

@@ -55,7 +55,8 @@ class TestGame(unittest.TestCase):
         self.assertEqual(self.game.locations[0].event.get("action_verb"), "use")
         self.assertEqual(self.game.locations[0].event.get("reaction_verb"), "can_travel")
         self.assertEqual(self.game.locations[0].event.get("reaction_object"), "Main street")
+        self.assertEqual(self.game.locations[0].event.get("reaction_desc"), "You threw the rock at the guard. it knocked him over in one!")
 
     def test_play(self):
-        #self.game.play()
+        self.game.play()
         pass
