@@ -29,6 +29,7 @@ class Character(object):
     def move(self, location):
         if location.travelable:
             self.set_location(location)
+            location.load()
         else:
             print "you can't go there yet!"
 

@@ -103,11 +103,10 @@ class Game(object):
         player.set_player_name(self.get_player_input("What is your name, young adventurer?"), self.name)
         player.set_location(first_location)
         first_location.add_character(player)
-
+        first_location.load()
         while player.is_alive and not player.is_victorious:
 
             location = player.current_location
-            location.load()
             parser = Parser(player, location)
             action = parser.parse(self.get_player_input())
             location.process_event(action)
