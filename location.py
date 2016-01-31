@@ -33,26 +33,31 @@ class Location(object):
 
     def get_item(self, item_name):
         for item in self.items:
-            if item_name == item.name or item_name == item.name.capitalize():
+            if item_name == item.name or item_name.capitalize() == item.name:
                 return item
-
-    def get_path(self, path_name):
-        for direction, location in self.paths.iteritems():
-            if location.name == path_name:
-                return location
 
     def get_character(self, character_name):
         for character in self.characters:
-            if character_name == character.name or character_name == character.name.capitalize():
+            if character_name == character.name or character_name.capitalize() == character.name:
                 return character
 
-    # TODO -- refactor to include paths
+    def get_path_by_loc(self, loc_name):
+        for direction, location in self.paths.iteritems():
+            if location.name == loc_name:
+                return location
+
+    def get_path_by_dir(self, dir_name):
+        for direction, location in self.paths.iteritems():
+            if direction == dir_name:
+                return location
 
     def search_objects(self, name):
-        for objs in [self.characters, self.items]:
-            for item in objs:
-                if name == item.name or name.capitalize() == item.name:
-                    return item
+        try:
+            objs = [self.get_path_by_dir(name), self.get_character(name), self.get_item(name)]
+            obj = filter(None, objs)
+            return obj[0]
+        except Exception as e:
+            pass
 
     def get_desc(self):
         return self.desc
@@ -70,7 +75,7 @@ class Location(object):
         object_check = verb.obj.name.lower()
         verb_check = verb.__class__.__name__.lower()
 
-        reaction_obj = self.get_path(self.event.get('reaction_object'))
+        reaction_obj = self.get_path_by_loc(self.event.get('reaction_object'))
         reaction_method_name = self.event.get('reaction_verb')
         reaction_desc = self.event.get('reaction_desc')
 

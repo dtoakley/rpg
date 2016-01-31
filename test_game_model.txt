@@ -1,6 +1,6 @@
 locations[0]
   name = front_gate
-  desc = You're outside the front gate of town. A town guard is iun front of it and a rock is on the floor nearby.
+  desc = You're outside the front gate of town. A town guard is in front of it and a rock is on the floor nearby.
   travelable = true
   items[0]
     name = rock

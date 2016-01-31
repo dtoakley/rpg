@@ -16,7 +16,7 @@ class PickUp(Verb):
         try:
             self.action(self.subj.add_item)
         except AttributeError:
-            print self.subj.name + "can't pick that up!"
+            print self.subj.name + " can't pick that up!"
 
 
 class LookAt(Verb):

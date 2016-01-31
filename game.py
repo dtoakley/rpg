@@ -112,9 +112,11 @@ class Game(object):
             parser = Parser(player, location)
             action = parser.parse(self.get_player_input())
 
-            try:
-                location.process_event(action)
-            except AttributeError:
-                print "that action isn't possible!"
+            if isinstance(action, Use):
+                try:
+                    location.process_event(action)
+                except AttributeError:
+                    print "that didn't work..."
+
 
 

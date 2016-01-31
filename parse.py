@@ -7,7 +7,7 @@ class Parser(object):
         self.player = player
         self.location = location
         self.pickup = ["take", "pickup", "get", "grab"]
-        self.lookat = ["lookat", "show", "see", "check"]
+        self.lookat = ["lookat", "look", "show", "see", "check"]
         self.use = ["use", "wield", "hold", "throw", "give"]
         self.move = ["go", "move", "walk", "travel"]
 
@@ -21,6 +21,7 @@ class Parser(object):
         if words[0] in self.pickup:
             try:
                 obj = self.location.search_objects(words[1])
+
                 return PickUp(self.player, obj)
             except AttributeError:
                 print "object not found!"
@@ -29,7 +30,6 @@ class Parser(object):
             if words[1] == "inventory":
                 inventory = self.player.get_inventory()
                 print inventory
-
             else:
                 try:
                     obj = self.location.search_objects(words[1])

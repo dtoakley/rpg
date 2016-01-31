@@ -17,6 +17,7 @@ class LocationTest(unittest.TestCase):
     front_gate.add_item(sword)
     front_gate.add_item(rock)
     front_gate.add_path({"north": main_street})
+    front_gate.add_player(player)
 
     def test_add_and_get_item(self):
 
@@ -36,6 +37,7 @@ class LocationTest(unittest.TestCase):
         self.assertEqual(self.front_gate.search_objects("sword"), self.sword)
         self.assertEqual(self.front_gate.search_objects("hero"), self.player)
         self.assertEqual(self.front_gate.search_objects("shield"), self.shield)
+        self.assertEqual(self.front_gate.search_objects("north"), self.front_gate.paths.get('north'))
 
     def test_process_event(self):
         self.player.add_item(self.rock)
