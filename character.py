@@ -17,6 +17,11 @@ class Character(object):
         print "you picked up the " + item.name
         return item
 
+    def get_item(self, item_name):
+        for item in self.items:
+            if item_name == item.name or item_name.capitalize() == item.name:
+                return item
+
     def get_inventory(self):
         result = []
         for item in self.items:

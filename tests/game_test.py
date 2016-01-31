@@ -33,7 +33,7 @@ class TestGame(unittest.TestCase):
 
     def test_add_items(self):
 
-        self.assertEqual(self.game.locations[0].characters[0].items[0].name, "Town key")
+        self.assertEqual(self.game.locations[0].characters[0].items[0].name, "Key")
         self.assertEqual(self.game.locations[1].characters[1].items[0].name, "Yo yo")
         self.assertEqual(self.game.locations[2].characters[0].items[0].name, "Tavern key")
         self.assertEqual(self.game.locations[3].items[0].name, "Wanted poster")
@@ -55,10 +55,10 @@ class TestGame(unittest.TestCase):
         self.assertTrue(self.game.locations[0].event)
         self.assertEqual(self.game.locations[0].event.get("action_object"), "rock")
         self.assertEqual(self.game.locations[0].event.get("action_verb"), "use")
-        self.assertEqual(self.game.locations[0].event.get("reaction_verb"), "can_travel")
-        self.assertEqual(self.game.locations[0].event.get("reaction_object"), "Main street")
+        self.assertEqual(self.game.locations[0].event.get("reaction_verb"), "can_trade")
+        self.assertEqual(self.game.locations[0].event.get("reaction_object"), "Key")
         self.assertEqual(self.game.locations[0].event.get("reaction_desc"), "You threw the rock at the guard. it knocked him over in one!")
 
     def test_play(self):
-        self.game.play()
+        #self.game.play()
         pass

@@ -1,10 +1,14 @@
 class Item(object):
 
-    def __init__(self, name, desc, value=0, is_tradeable=True):
+    def __init__(self, name, desc, value=0, tradeable=False):
         self.name = name
         self.desc = desc
         self.value = value
-        self.is_tradeable = is_tradeable
+        self.tradeable = tradeable
+
+    def can_trade(self):
+        self.tradeable = True
+        return True
 
 
 class Weapon(Item):

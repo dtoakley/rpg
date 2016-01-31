@@ -56,8 +56,8 @@ class Location(object):
             objs = [self.get_path_by_dir(name), self.get_character(name), self.get_item(name)]
             obj = filter(None, objs)
             return obj[0]
-        except Exception as e:
-            pass
+        except IndexError as e:
+            return e
 
     def get_desc(self):
         return self.desc
@@ -75,7 +75,8 @@ class Location(object):
         object_check = verb.obj.name.lower()
         verb_check = verb.__class__.__name__.lower()
 
-        reaction_obj = self.get_path_by_loc(self.event.get('reaction_object'))
+        # TODO -- find a way to search of items either in a location or on a character. currently this is breaking :(
+        reaction_obj = self.search_objects(self.event.get('reaction_object'))
         reaction_method_name = self.event.get('reaction_verb')
         reaction_desc = self.event.get('reaction_desc')
 

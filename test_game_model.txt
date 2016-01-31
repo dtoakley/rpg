@@ -10,7 +10,7 @@ locations[0]
     name = guard
     desc = He's standing in front of the town gate. Looks angry...
     items[0]
-      name = town_key
+      name = key
       desc = A key to the town front gate!
       value n = 20
   paths
@@ -87,7 +87,7 @@ locations[3]
     items[3]
       name = birthday_cake
       desc = A triple layered birthday cake. Looks delicious!
-      value n = 25
+      value n = 20
 lexicon
   paths [] = north, south, east, west
   verbs [] = move, go, pick, take, look, show, use

@@ -17,9 +17,10 @@
           "desc": "He's standing in front of the town gate. Looks angry...",
           "items": [
             {
-              "name": "town_key",
+              "name": "key",
               "desc": "A key to the town front gate!",
-              "value": 20
+              "value": 0,
+              "tradeable": false
             }
           ]
         }
@@ -30,8 +31,8 @@
       "event": {
         "action_verb": "use",
         "action_object": "rock",
-        "reaction_object": "Main street",
-        "reaction_verb": "can_travel",
+        "reaction_object": "Key",
+        "reaction_verb": "can_trade",
         "reaction_desc": "You threw the rock at the guard. it knocked him over in one!"
       }
     },
@@ -129,7 +130,7 @@
             {
               "name": "birthday_cake",
               "desc": "A triple layered birthday cake. Looks delicious!",
-              "value": 25
+              "value": 20
             }
           ]
         }
