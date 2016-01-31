@@ -47,7 +47,7 @@ class LocationTest(unittest.TestCase):
 
         self.front_gate.process_event(use_action)
 
-        self.assertTrue(self.front_gate.can_travel)
+        self.assertTrue(self.front_gate.paths.get('north').travelable)
         self.assertFalse(self.rock in self.player.items)
 
 

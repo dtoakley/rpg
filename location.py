@@ -8,7 +8,7 @@ class Location(object):
         self.event = event
         self.paths = paths
         self.first_time = True
-        self.can_travel = False
+        self.travelable = False
 
     def add_item(self, item):
         self.items.append(item)
@@ -23,7 +23,7 @@ class Location(object):
         return path
 
     def can_travel(self):
-        self.can_travel = True
+        self.travelable = True
         return True
 
     def get_item(self, item_name):
@@ -65,16 +65,17 @@ class Location(object):
         object_check = verb.obj.name.lower()
         verb_check = verb.__class__.__name__.lower()
 
-        print object_check.lower(), verb_check.lower()
-
         if self.event.get('action_verb') == verb_check and self.event.get('action_object') == object_check:
+
             reaction_obj = self.get_path(self.event.get('reaction_object'))
+            print reaction_obj
             reaction_method_name = self.event.get('reaction_verb')
 
-            print reaction_method_name
+            getattr(reaction_obj, reaction_method_name)()
 
 
-    def first_time_event(self):
+    @staticmethod
+    def first_time_event():
         print "first time event!"
 
 
