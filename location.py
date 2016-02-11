@@ -69,6 +69,8 @@ class Location(object):
             self.first_time_event()
             self.first_time = False
 
+    # TODO -- refactor entirely. far too complex.
+
     def process_event(self, verb):
         # takes a verb object and executes the event in that location
 
